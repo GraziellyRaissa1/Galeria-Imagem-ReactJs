@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useState } from 'react'; 
+function GaleriaDeImagens() { 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [imagens, setImagens] = useState([ 
 
-export default App;
+    'https://via.placeholder.com/150', 
+
+    'https://via.placeholder.com/150', 
+
+    'https://via.placeholder.com/150' 
+
+  ]); 
+  const adicionarImagem = () => { 
+
+    setImagens([...imagens, 'https://via.placeholder.com/150']); 
+
+  }; 
+  return ( 
+
+    <div id='container'> 
+       
+       <h2>Galeria de Imagens</h2> 
+      
+      <div style={{ display: 'flex', flexWrap: 'wrap' }} id='imagem'> 
+
+        {imagens.map((imagem, index) => ( 
+
+          <img key={index} src={imagem} alt={`Imagem ${index + 1}`} style={{ margin: '5px' }} /> 
+
+        ))} 
+
+      </div> 
+      <div id='Button'>
+      <button onClick={adicionarImagem} style={{ marginTop: '10px' }}>Adicionar Imagem</button> 
+      </div>
+    </div> 
+
+  ); 
+
+} 
+
+export default GaleriaDeImagens; 
